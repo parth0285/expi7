@@ -16,14 +16,19 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                sh 'mvn clean verify'
+                bat 'mvn clean verify'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=Experiment10'
+                    bat '''
+                    mvn sonar:sonar ^
+                    -Dsonar.projectKey=Experiment10 ^
+                    -Dsonar.host.url=http://localhost:9000 ^
+                    -Dsonar.login=YOUR_TOKEN
+                    '''
                 }
             }
         }
