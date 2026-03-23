@@ -1,0 +1,2 @@
+
+mvn clean verify sonar:sonar-Dsonar.projectKey=demo-project-Dsonar.host.url=http://localhost:9000-Dsonar.login=squ_bd8f61b6e2fc7c9d3ad0c8967c438184d83a5e75
