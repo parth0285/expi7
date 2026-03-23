@@ -9,8 +9,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                    url: 'https://github.com/parth0285/expi7.git'
+                git branch: 'main', url: 'https://github.com/parth0285/expi7.git'
             }
         }
 
@@ -25,21 +24,12 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     bat '''
                     mvn sonar:sonar ^
-                    -Dsonar.projectKey=Experiment10 ^
+                    -Dsonar.projectKey=demo-project ^
                     -Dsonar.host.url=http://localhost:9000 ^
                     -Dsonar.login=YOUR_TOKEN
                     '''
                 }
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build Successful'
-        }
-        failure {
-            echo 'Build Failed'
         }
     }
 }
